@@ -1,0 +1,9 @@
+<config>
+    <modules>
+        <Sendpulse_Integration>
+            <active>true</active>
+            <!--have to change it to community-->
+            <codePool>local</codePool>
+        </Sendpulse_Integration>
+    </modules>
+</config>

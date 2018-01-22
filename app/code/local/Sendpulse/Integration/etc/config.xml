@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sendpulse_Integration>
+            <version>1.0</version>
+        </Sendpulse_Integration>
+    </modules>
+    <global>
+        <models>
+            <sendpulseintegration>
+                <class>Sendpulse_Integration_Model</class>
+            </sendpulseintegration>
+        </models>
+        <helpers>
+            <sendpulseintegration>
+                <class>Sendpulse_Integration_Helper</class>
+            </sendpulseintegration>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <sendpulseintegration>
+                <use>standard</use>
+                <args>
+                    <module>Sendpulse_Integration</module>
+                    <frontName>sendpulseintegration</frontName>
+                </args>
+            </sendpulseintegration>
+        </routers>
+    </frontend>
+</config>
