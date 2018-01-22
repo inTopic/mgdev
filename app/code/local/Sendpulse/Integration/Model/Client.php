@@ -58,6 +58,9 @@ class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_
         echo 'hashname: ';
         var_dump($hashName);
 
+        echo '$tokenStorage: ';
+        var_dump($tokenStorage);
+
         /** load token from storage */
         $this->token = $this->tokenStorage->get($hashName);
 
