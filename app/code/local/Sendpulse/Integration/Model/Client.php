@@ -55,6 +55,8 @@ class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_
         $this->secret = $secret;
         $this->tokenStorage = $tokenStorage;
         $hashName = md5($userId . '::' . $secret);
+        echo 'hashname: ';
+        var_dump($hashName);
 
         /** load token from storage */
         $this->token = $this->tokenStorage->get($hashName);
