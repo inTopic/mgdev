@@ -8,13 +8,17 @@ class Sendpulse_Integration_IndexController extends Mage_Core_Controller_Front_A
 
     public function indexAction()
     {
-        echo 'welcome to sendpulse integration test page';
+        echo 'welcome to sendpulse integration test page </br>';
         $SPApiClient = Mage::getModel('sendpulseintegration/client', $this->API_USER_ID, $this->API_SECRET);
 
 // Get Mailing Lists list example
         var_dump($SPApiClient->listAddressBooks());
+    }
 
-// Send mail using SMTP
+    public function smtpAction()
+    {
+        $SPApiClient = Mage::getModel('sendpulseintegration/client', $this->API_USER_ID, $this->API_SECRET);
+        // Send mail using SMTP
         $email = array(
             'html' => '<p>Hello!</p>',
             'text' => 'text',
@@ -29,19 +33,22 @@ class Sendpulse_Integration_IndexController extends Mage_Core_Controller_Front_A
                     'email' => 'ruslanmyata@gmail.com',
                 ),
             ),
-//            'bcc' => array(
-//                array(
-//                    'name' => 'Manager',
-//                    'email' => 'manager@domain.com',
-//                ),
-//            ),
+            //            'bcc' => array(
+            //                array(
+            //                    'name' => 'Manager',
+            //                    'email' => 'manager@domain.com',
+            //                ),
+            //            ),
             'attachments' => array(
                 'file.txt' => file_get_contents($this->PATH_TO_ATTACH_FILE),
             ),
         );
         var_dump($SPApiClient->smtpSendMail($email));
 
+    }
 
+    public function pushAction()
+    {
         /*
          * Example: create new push
          */

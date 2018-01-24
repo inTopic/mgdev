@@ -16,6 +16,11 @@
 //use Sendpulse\RestApi\Storage\TokenStorageInterface;
 //use stdClass;
 
+//SMTP Server: mx.mgdev.sendpulse.com
+//Username: ruslanvoronov
+//Password: 123123qw
+
+
 class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_ApiInterface
 {
 
@@ -45,7 +50,7 @@ class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_
     public function __construct($userId = '6db3b0a98394f0c9218d204f69415edf', $secret = '571bf02fcd780bff4bc848e1c2806b78', TokenStorageInterface $tokenStorage = null)
     {
         if ($tokenStorage === null) {
-            $tokenStorage = Mage::getModel('sendpulseintegration/storage_filestorage', '/Applications/MAMP/htdocs/test.local/app/code/local/Sendpulse/Integration/src/');
+            $tokenStorage = Mage::getModel('sendpulseintegration/storage_fileStorage', Mage::getBaseDir() . '/app/code/local/Sendpulse/Integration/src/');
         }
         if (empty($userId) || empty($secret)) {
             throw new Exception('Empty ID or SECRET');
@@ -55,11 +60,6 @@ class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_
         $this->secret = $secret;
         $this->tokenStorage = $tokenStorage;
         $hashName = md5($userId . '::' . $secret);
-        echo 'hashname: ';
-        var_dump($hashName);
-
-        echo '$tokenStorage: ';
-        var_dump($tokenStorage);
 
         /** load token from storage */
         $this->token = $this->tokenStorage->get($hashName);
