@@ -11,13 +11,13 @@
             <label>Authorization</label>
             <tab>sendpulseintegration</tab>
             <frontend_type>text</frontend_type>
-            <sort_order>1000</sort_order>
+            <sort_order>2</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
-            <groups translate="label" module="sendpulseintegration">
-                <messages translate="label">
-                    <label>Authorization information</label>
+            <groups>
+                <messages translate="label" module="sendpulseintegration">
+                    <label>SendPulse Конфигурация</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
@@ -25,22 +25,14 @@
                     <show_in_store>1</show_in_store>
                     <expanded>1</expanded>
                     <fields>
-                        <client_id>
-                            <label>ID</label>
+                        <sendpulseintegration_client_id>
+                            <label>EMAIL</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </client_id>
-                        <secred_key>
-                            <label>SECRET KEY</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </secred_key>
+                        </sendpulseintegration_client_id>
                     </fields>
                 </messages>
             </groups>

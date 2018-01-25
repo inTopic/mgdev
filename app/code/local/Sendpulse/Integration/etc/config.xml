@@ -28,4 +28,25 @@
             </sendpulseintegration>
         </routers>
     </frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <sendpulseintegration_options>
+                                            <title>Store Hello World Module Section</title>
+                                        </sendpulseintegration_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
 </config>
