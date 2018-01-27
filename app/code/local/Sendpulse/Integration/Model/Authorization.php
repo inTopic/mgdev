@@ -1,27 +1,9 @@
 <?php
 
-/*
- * SendPulse REST API Client
- *
- * Documentation
- * https://login.sendpulse.com/manual/rest-api/
- * https://sendpulse.com/api
- *
+/**
+ * Class Sendpulse_Integration_Model_Authorization
  */
-
-//namespace Sendpulse\RestApi;
-
-//use Exception;
-//use Sendpulse\RestApi\Storage\FileStorage;
-//use Sendpulse\RestApi\Storage\TokenStorageInterface;
-//use stdClass;
-
-//SMTP Server: mx.mgdev.sendpulse.com
-//Username: ruslanvoronov
-//Password: 123123qw
-
-
-class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_ApiInterface
+class Sendpulse_Integration_Model_Authorization implements Sendpulse_Integration_Model_ApiInterface
 {
 
     private $apiUrl = 'https://api.sendpulse.com';
@@ -41,33 +23,16 @@ class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_
     /**
      * Sendpulse API constructor
      *
-     * @param                       $userId
-     * @param                       $secret
      * @param TokenStorageInterface $tokenStorage
      *
      * @throws Exception
      */
-    public function __construct($userId = '6db3b0a98394f0c9218d204f69415edf', $secret = '571bf02fcd780bff4bc848e1c2806b78', TokenStorageInterface $tokenStorage = null)
+    public function __construct(TokenStorageInterface $tokenStorage = null)
     {
         if ($tokenStorage === null) {
             $tokenStorage = Mage::getModel('sendpulseintegration/storage_fileStorage', Mage::getBaseDir() . '/app/code/local/Sendpulse/Integration/src/');
         }
-        if (empty($userId) || empty($secret)) {
-            throw new Exception('Empty ID or SECRET');
-        }
-
-        $this->userId = $userId;
-        $this->secret = $secret;
         $this->tokenStorage = $tokenStorage;
-        $hashName = md5($userId . '::' . $secret);
-
-        /** load token from storage */
-        $this->token = $this->tokenStorage->get($hashName);
-
-        $this->getToken();
-        if (empty($this->token) && !$this->getToken()) {
-            throw new Exception('Could not connect to api, check your ID and SECRET');
-        }
     }
 
     /**

@@ -6,6 +6,11 @@
         </Sendpulse_Integration>
     </modules>
     <global>
+        <blocks>
+            <sendpulseintegration>
+                <class>Sendpulse_Integration_Block</class>
+            </sendpulseintegration>
+        </blocks>
         <models>
             <sendpulseintegration>
                 <class>Sendpulse_Integration_Model</class>
@@ -17,6 +22,18 @@
             </sendpulseintegration>
         </helpers>
     </global>
+    <!--под водпросом-->
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <sendpulseintegration after="Mage_Adminhtml">Sendpulse_Integration</sendpulseintegration>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
     <frontend>
         <routers>
             <sendpulseintegration>

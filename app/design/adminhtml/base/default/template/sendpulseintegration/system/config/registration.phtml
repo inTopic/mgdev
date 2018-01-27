@@ -1,0 +1,33 @@
+<?php
+/** @var $this Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Button */
+$this;
+?>
+    <script type="text/javascript">
+        //<![CDATA[
+        function connect() {
+            var registrationEmail = document.getElementById('sendpulseintegration_options_registration_sendpulseintegration_registration_email').value;
+            var registrationPhone = document.getElementById('sendpulseintegration_options_registration_sendpulseintegration_registration_phone').value;
+            var registrationName = document.getElementById('row_sendpulseintegration_options_registration_sendpulseintegration_registration_name').value;
+            var registrationPassword = document.getElementById('row_sendpulseintegration_options_registration_sendpulseintegration_registration_password').value;
+            var registrationConfirmPassword = document.getElementById('row_sendpulseintegration_options_registration_sendpulseintegration_registration_confirm_password').value;
+
+
+            new Ajax.Request('<?php echo $this->getConnectUrl() ?>', {
+                method: 'get',
+                parameters: {
+                    account_email: registrationEmail,
+                    account_phone: registrationPhone,
+                    account_name: registrationName,
+                    account_password: registrationPassword,
+                },
+                onSuccess: function (transport) {
+                    if (transport.responseText) {
+                        alert(transport.responseText)
+                    }
+                }
+            });
+        }
+        //]]>
+    </script>
+
+<?php echo $this->getButtonHtml() ?>

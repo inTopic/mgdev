@@ -1,0 +1,22 @@
+<?php
+/** @var $this Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Button */
+$this;
+?>
+<script type="text/javascript">
+    //<![CDATA[
+    function signin() {
+        var accountEmail = document.getElementById('sendpulseintegration_options_authorization_sendpulseintegration_account').value;
+        new Ajax.Request('<?php echo $this->getAuthorizationUrl() ?>', {
+            method: 'get',
+            parameters: {account_email: accountEmail},
+            onSuccess: function (transport) {
+                if (transport.responseText) {
+                    alert(transport.responseText)
+                }
+            }
+        });
+    }
+    //]]>
+</script>
+
+<?php echo $this->getButtonHtml() ?>
