@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Authorization
+ * Class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Export
  */
-class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Authorization
+class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Export
     extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
     /**
@@ -12,7 +12,7 @@ class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Authorization
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('sendpulseintegration/system/config/authorization.phtml');
+        $this->setTemplate('sendpulseintegration/system/config/export.phtml');
     }
 
     /**
@@ -28,23 +28,13 @@ class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Authorization
     }
 
     /**
-     * get authorization url
-     *
-     * @return mixed
-     */
-    public function getAuthorizationUrl()
-    {
-        return Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_integration/authorization');
-    }
-
-    /**
      * Return ajax url for button
      *
      * @return string
      */
-    public function getRegistrationUrl()
+    public function getExportUrl()
     {
-        return Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_integration/registration');
+        return Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_integration/export');
     }
 
     /**
@@ -57,9 +47,9 @@ class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Authorization
         $button = $this->getLayout()->createBlock('adminhtml/widget_button')
             ->setData(
                 array(
-                    'id'      => 'sendpulseintegration_authorization_button',
+                    'id'      => 'sendpulseintegration_export_button',
                     'label'   => $this->helper('adminhtml')->__('Подключить'),
-                    'onclick' => 'javascript:signin(); return false;'
+                    'onclick' => 'javascript:exportCustomers(); return false;'
                 )
             );
 

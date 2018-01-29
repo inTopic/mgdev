@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Sendpulse_Integration_Adminhtml_IntegrationController
+ */
 class Sendpulse_Integration_Adminhtml_IntegrationController extends Mage_Adminhtml_Controller_Action
 {
     public $API_USER_ID = '6db3b0a98394f0c9218d204f69415edf';
@@ -18,13 +21,12 @@ class Sendpulse_Integration_Adminhtml_IntegrationController extends Mage_Adminht
         $params = $this->getRequest()->getParams();
         // Get Mailing Lists list example
         $response = $SPApiClient->authorization($params['account_email']);
-        Mage::app()->getResponse()->setBody('login');
-//        Mage::app()->getResponse()->setBody($SPApiClient->listAddressBooks());
+        Mage::app()->getResponse()->setBody($response);
     }
 
 
     /**
-     * return id and secret key for exist account
+     * user authorization
      *
      * @return array
      */
@@ -35,11 +37,14 @@ class Sendpulse_Integration_Adminhtml_IntegrationController extends Mage_Adminht
         $params = $this->getRequest()->getParams();
         // Get Mailing Lists list example
         $response = $SPApiClient->authorization($params['account_email']);
-        Mage::app()->getResponse()->setBody('login');
+        Mage::app()->getResponse()->setBody(implode(',',json_decode(json_encode($response), True)));
     }
 
+
     /**
+     * user registration
      *
+     * @return array
      */
     public function registrationAction()
     {
@@ -47,11 +52,11 @@ class Sendpulse_Integration_Adminhtml_IntegrationController extends Mage_Adminht
     }
 
     /**
-     * registration account
+     * export customers
      */
-    public function integrationAction()
+    public function exportAction()
     {
-        $param = $this->getRequest()->getParams();
-        Mage::app()->getResponse()->setBody('registration');
+        Mage::app()->getResponse()->setBody(implode(',',json_decode(json_encode(array(1,2,3,4)), True)));
     }
+
 }

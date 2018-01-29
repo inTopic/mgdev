@@ -1,18 +1,24 @@
 <?php
-/** @var $this Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Button */
+/** @var $this Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Registration */
 $this;
 ?>
     <script type="text/javascript">
         //<![CDATA[
-        function connect() {
+        function showMessage(txt, type) {
+            var html = '<ul class="messages"><li class="'+type+'-msg"><ul><li>' + txt + '</li></ul></li></ul>';
+            $('messages').update(html);
+        }
+        function signup() {
             var registrationEmail = document.getElementById('sendpulseintegration_options_registration_sendpulseintegration_registration_email').value;
             var registrationPhone = document.getElementById('sendpulseintegration_options_registration_sendpulseintegration_registration_phone').value;
             var registrationName = document.getElementById('row_sendpulseintegration_options_registration_sendpulseintegration_registration_name').value;
             var registrationPassword = document.getElementById('row_sendpulseintegration_options_registration_sendpulseintegration_registration_password').value;
             var registrationConfirmPassword = document.getElementById('row_sendpulseintegration_options_registration_sendpulseintegration_registration_confirm_password').value;
+            if (registrationPassword != registrationConfirmPassword) {
+                showMessage('Password is not Matching', 'error');
+            }
 
-
-            new Ajax.Request('<?php echo $this->getConnectUrl() ?>', {
+            new Ajax.Request('<?php echo $this->getRegistrationUrl() ?>', {
                 method: 'get',
                 parameters: {
                     account_email: registrationEmail,

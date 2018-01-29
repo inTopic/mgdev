@@ -1,9 +1,12 @@
 <?php
 
+/**
+ * Class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Registration
+ */
 class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Registration extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
-    /*
-     * Set template
+    /**
+     * _construct
      */
     protected function _construct()
     {
@@ -43,9 +46,9 @@ class Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Registration exte
         $button = $this->getLayout()->createBlock('adminhtml/widget_button')
             ->setData(
                 array(
-                    'id'      => 'sendpulseintegration_button',
+                    'id'      => 'sendpulseintegration_registration_button',
                     'label'   => $this->helper('adminhtml')->__('Регистрация'),
-                    'onclick' => 'javascript:connect(); return false;'
+                    'onclick' => 'javascript:signup(); return false;'
                 )
             );
 

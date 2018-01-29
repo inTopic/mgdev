@@ -1,17 +1,32 @@
 <?php
-/** @var $this Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Button */
+/** @var $this Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Authorization */
 $this;
 ?>
 <script type="text/javascript">
     //<![CDATA[
+    function showMessage(txt, type) {
+        var html = '<ul class="messages"><li class="'+type+'-msg"><ul><li>' + txt + '</li></ul></li></ul>';
+        $('messages').update(html);
+    }
     function signin() {
-        var accountEmail = document.getElementById('sendpulseintegration_options_authorization_sendpulseintegration_account').value;
+        var accountEmail = document.getElementById('sendpulseintegration_options_configuration_authorization_sendpulseintegration_account').value;
         new Ajax.Request('<?php echo $this->getAuthorizationUrl() ?>', {
             method: 'get',
             parameters: {account_email: accountEmail},
             onSuccess: function (transport) {
                 if (transport.responseText) {
-                    alert(transport.responseText)
+                    var resultArray = transport.responseText.split(",");
+                    if (resultArray[3] == 400) {
+                        // something went wrong
+                        console.log(resultArray[3]);
+                        document.getElementById('sendpulseintegration_options_configuration_registration-head').classList.add('open');
+                        document.getElementById('sendpulseintegration_options_configuration_registration').style.display = "block";
+                        showMessage('Such account was not found. We can create a new account for you to continue working', 'error');
+                    } else {
+                        // authorization went well
+
+                    }
+//                    alert(transport.responseText)
                 }
             }
         });

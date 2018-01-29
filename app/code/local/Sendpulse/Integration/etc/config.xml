@@ -54,9 +54,8 @@
                             <children>
                                 <config>
                                     <children>
-                                        <sendpulseintegration_options>
-                                            <title>Store Hello World Module Section</title>
-                                        </sendpulseintegration_options>
+                                        <sendpulseintegration_options_configuration/>
+                                        <sendpulseintegration_options_export/>
                                     </children>
                                 </config>
                             </children>

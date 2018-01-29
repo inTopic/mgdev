@@ -291,43 +291,6 @@ class Sendpulse_Integration_Model_Client implements Sendpulse_Integration_Model_
         return $this->handleResult($requestResult);
     }
 
-    /**
-     * @param $email
-     *
-     * @return stdClass
-     */
-    public function authorization($email){
-        $data['email'] = $email;
-        $data['app'] = 'magento1';
-        $data['hash'] = $this->fromDynamicHashString(array());
-
-        $requestResult = $this->sendRequest('userapi/credential', 'GET', $data);
-        return $this->handleResult($requestResult);
-    }
-
-
-    /**
-     * has generator
-     *
-     * @param $params
-     *
-     * @return mixed
-     */
-    public static function fromDynamicHashString($params)
-    {
-        $keyStr = implode(',', $params);
-//        $keyStr = self::paramsToString($params);
-        $length = strlen($keyStr);
-        $str = '';
-
-        for ($i = 0; $i < $length; ++$i) {
-            if (($i + 1) % 2 === 0) {
-                $str .= $keyStr[$i];
-            }
-        }
-        return strtoupper(hash('sha256', $str));
-    }
-
 
     /**
      * Get information about book

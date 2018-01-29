@@ -1,0 +1,24 @@
+<?php
+/** @var $this Sendpulse_Integration_Block_Adminhtml_System_Config_Form_Export */
+$this;
+?>
+<script type="text/javascript">
+    function showMessage(txt, type) {
+        var html = '<ul class="messages"><li class="'+type+'-msg"><ul><li>' + txt + '</li></ul></li></ul>';
+        $('messages').update(html);
+    }
+    //<![CDATA[
+    function exportCustomers() {
+        new Ajax.Request('<?php echo $this->getExportUrl() ?>', {
+            method: 'get',
+            onSuccess: function (transport) {
+                if (transport.responseText) {
+                   alert(transport.responseText)
+                }
+            }
+        });
+    }
+    //]]>
+</script>
+
+<?php echo $this->getButtonHtml() ?>
